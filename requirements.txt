@@ -1,7 +1,8 @@
---find-links https://download.lfd.uci.edu/pythonlibs/q4hiv4cu/numpy/  # Pre-built wheels for Windows/Linux
-setuptools>=60.0
+setuptools>=60.0  # Ensures modern version with distutils support
+wheel  # Helps ensure packages like numpy are installed from wheels instead of being built from source
 streamlit==1.26.0
-numpy==1.23.3  # Or adjust the version if you encounter more issues
+numpy==1.21.0  # Use an older, more stable version
 pandas==1.5.3
 plotly==5.13.1
 entropyhub==2.0
+
