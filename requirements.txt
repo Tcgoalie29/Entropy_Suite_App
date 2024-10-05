@@ -2,4 +2,4 @@ streamlit==1.26.0
 numpy==1.23.5
 pandas==1.5.3
 plotly==5.13.1
-EntropyHub @ git+https://github.com/roboos/EntropyHub-Python.git
+entropyhub==2.0
