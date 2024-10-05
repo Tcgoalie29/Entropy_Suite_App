@@ -1,6 +1,6 @@
 setuptools
 streamlit==1.26.0
-numpy==1.23.5
+numpy==1.23.3  # Downgrade to avoid build issues
 pandas==1.5.3
 plotly==5.13.1
 entropyhub==2.0
