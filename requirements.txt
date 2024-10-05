@@ -1,7 +1,5 @@
-setuptools>=60.0  # Ensures distutils support
-wheel  # Ensures numpy installs from a pre-built wheel
 streamlit==1.26.0
-numpy==1.23.3  # This version should be compatible with pandas==1.5.3
+numpy==1.23.5
 pandas==1.5.3
 plotly==5.13.1
 entropyhub==2.0
