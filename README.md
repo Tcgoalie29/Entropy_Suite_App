@@ -48,7 +48,7 @@ Start the application with the following command:
 streamlit run entropy_suite_app_12.0.py
 ```
 
-Note: After installation, the application can simply be run by navigating to the folder:
+Note: After installation, the application can simply be run by opening terminal (Mac/Linux) or command prompt (Windows), navigating to the folder:
 ```bash
 cd /path/to/your/folder
 ```
