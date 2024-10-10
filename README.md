@@ -4,7 +4,7 @@
 Entropy Suite is a Streamlit-based web application designed to analyze the complexity of time-series data, particularly EEG data, using various entropy measures like Sample Entropy and Fuzzy Entropy. The app provides users with interactive plots, multiple entropy measures, and the ability to download the processed data.
 
 ## Features
-- Upload preprocessed EEG data in CSV format or use the sample dataset(s) provided.
+- Upload preprocessed EEG data in CSV format or use the sample dataset(s) provided
 - Choose from multiple entropy measures
 - Perform single-channel and multichannel entropy analysis
 - Visualize entropy across multiple scales with interactive plots
