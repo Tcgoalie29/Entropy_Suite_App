@@ -31,13 +31,13 @@ cd /path/to/your/folder
 ### Step 2: Clone the repository
 Clone the repository into your chosen folder:
 ```bash
-git clone https://github.com/Tcgoalie29/Entropy-Suite-Application.git
+git clone https://github.com/Tcgoalie29/Entropy-Suite-App.git .
 ```
 
 ### Step 3: Navigate to the repository folder
 Navigate to the folder containing the cloned repository:
 ```bash
-cd Entropy-Suite-App
+cd /path/to/your/folder
 ```
 
 ### Step 4: Install the required dependencies
@@ -65,7 +65,7 @@ streamlit run entropy_suite_app_12.0.py
 /Entropy-Suite-App
   - entropy_suite_app_12.0.py            # Main Python script for running the Streamlit app
   - requirements.txt                     # List of required Python packages
-  - README.md                            # Documentation for the project
+  - README_Entropy_Suite.md                            # Documentation for the project
   /data
     - Rest_EC_00831_01_FilteredData.csv  # Example EEG data for testing
     - Rest_EC_860_01_FilteredData.csv    # Example EEG data for testing
