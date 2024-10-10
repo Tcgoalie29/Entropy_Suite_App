@@ -31,7 +31,7 @@ cd /path/to/your/folder
 ### Step 2: Clone the repository
 Clone the repository into your chosen folder:
 ```bash
-git clone https://github.com/Tcgoalie29/Entropy-Suite-App.git .
+git clone https://github.com/Tcgoalie29/Entropy_Suite_App.git .
 ```
 
 ### Step 3: Navigate to the repository folder
