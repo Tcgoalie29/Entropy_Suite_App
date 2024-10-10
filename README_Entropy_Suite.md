@@ -19,21 +19,38 @@ Entropy Suite is a Streamlit-based web application designed to analyze the compl
 
 ## Installation
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/Tcgoalie29/Entropy-Suite-App.git
-   cd entropy-suite
-   ```
+### Install Python (if not already installed)
+Before starting, make sure you have Python installed. You can download it from [python.org](https://www.python.org/).
 
-2. Install the required dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
+### Step 1: Create an empty folder
+Create an empty folder where you want to store the Entropy Suite files, then open terminal (Mac/Linux) or command prompt (Windows) and navigate to the folder:
+```bash
+cd /path/to/your/folder
+```
 
-3. Run the Streamlit app:
-   ```bash
-   streamlit run app.py
-   ```
+### Step 2: Clone the repository
+Clone the repository into your chosen folder:
+```bash
+git clone https://github.com/Tcgoalie29/Entropy-Suite-Application.git
+```
+
+### Step 3: Navigate to the repository folder
+Navigate to the folder containing the cloned repository:
+```bash
+cd Entropy-Suite-App
+```
+
+### Step 4: Install the required dependencies
+Install the necessary Python packages by running:
+```bash
+pip install -r requirements.txt
+```
+
+### Step 5: Run the Streamlit app
+Start the application with the following command:
+```bash
+streamlit run entropy_suite_app_12.0.py
+```
 
 ## How to Use
 
@@ -44,11 +61,11 @@ Entropy Suite is a Streamlit-based web application designed to analyze the compl
 
 ## Project Structure
 
-```
-/entropy-suite
-  - app.py                    # Main Python script for running the Streamlit app
-  - requirements.txt           # List of required Python packages
-  - README.md                  # Documentation for the project
+```bash
+/Entropy-Suite-App
+  - entropy_suite_app_12.0.py            # Main Python script for running the Streamlit app
+  - requirements.txt                     # List of required Python packages
+  - README.md                            # Documentation for the project
   /data
     - Rest_EC_00831_01_FilteredData.csv  # Example EEG data for testing
     - Rest_EC_860_01_FilteredData.csv    # Example EEG data for testing
