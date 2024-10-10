@@ -1,3 +1,5 @@
+# entropy_suite_app.py
+
 import streamlit as st
 import os
 import numpy as np
@@ -155,8 +157,8 @@ with tab2:
 
     # Preload sample datasets
     sample_files = {
-        "Sample EEG 1": "/Users/tannercreel/Desktop/Dissertation/Python_Projects/Cannabis Complexity/Non_Users/Rest_EC_00831_01_FilteredData.csv",
-        "Sample EEG 2": "/Users/tannercreel/Desktop/Dissertation/Python_Projects/Cannabis Complexity/Non_Users/Rest_EC_860_01_FilteredData.csv"
+        "Sample EEG 1": "Rest_EC_00831_01_FilteredData.csv",
+        "Sample EEG 2": "Rest_EC_860_01_FilteredData.csv"
     }
     selected_samples = st.sidebar.multiselect(
         "Or select sample EEG dataset(s)",
@@ -933,4 +935,3 @@ with tab3:
 # Footer
 st.markdown("---")
 st.markdown("Developed by Tanner Creel")
-
