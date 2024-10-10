@@ -19,25 +19,20 @@ Entropy Suite is a Streamlit-based web application designed to analyze the compl
 
 ## Installation
 
-### Install Python (if not already installed)
+### Step 1: Install Python (if not already installed)
 Before starting, make sure you have Python installed. You can download it from [python.org](https://www.python.org/).
 
-### Step 1: Create an empty folder
+
+### Step 2: Create an empty folder
 Create an empty folder where you want to store the Entropy Suite files, then open terminal (Mac/Linux) or command prompt (Windows) and navigate to the folder:
 ```bash
 cd /path/to/your/folder
 ```
 
-### Step 2: Clone the repository
+### Step 3: Clone the repository
 Clone the repository into your chosen folder:
 ```bash
 git clone https://github.com/Tcgoalie29/Entropy_Suite_App.git .
-```
-
-### Step 3: Navigate to the repository folder
-Navigate to the folder containing the cloned repository:
-```bash
-cd /path/to/your/folder
 ```
 
 ### Step 4: Install the required dependencies
