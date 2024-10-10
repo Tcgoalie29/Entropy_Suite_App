@@ -59,7 +59,7 @@ streamlit run entropy_suite_app_12.0.py
 
 ## How to Use
 
-1. Upload your preprocessed EEG CSV files via the sidebar or select one of the sample datasets.
+1. Upload your preprocessed EEG CSV files via the sidebar or select the sample dataset(s).
 2. Customize the entropy analysis by selecting the analysis type, entropy measure, and other parameters like scales and sampling frequency.
 3. Click "Run Analysis" to start processing the data.
 4. Visualize the results through interactive plots, and download the results as CSV for further analysis.
