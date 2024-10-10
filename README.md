@@ -15,13 +15,14 @@ Entropy Suite is a Streamlit-based web application designed to analyze the compl
 - [How to Use](#how-to-use)
 - [Project Structure](#project-structure)
 - [Sample Data](#sample-data)
+- [Updating the Repository](#updating-the-repository)
 - [License](#license)
+
 
 ## Installation
 
 ### Step 1: Install Python (if not already installed)
 Before starting, make sure you have Python installed. You can download it from [python.org](https://www.python.org/).
-
 
 ### Step 2: Create an empty folder
 Create an empty folder where you want to store the Entropy Suite files, then open terminal (Mac/Linux) or command prompt (Windows) and navigate to the folder:
@@ -46,11 +47,12 @@ Start the application with the following command:
 ```bash
 streamlit run entropy_suite_app_12.0.py
 ```
-Note: After installation, the application can simply be ran by navigating to the folder:
+
+Note: After installation, the application can simply be run by navigating to the folder:
 ```bash
 cd /path/to/your/folder
 ```
-and starting the application with the following command:
+and starting the application with:
 ```bash
 streamlit run entropy_suite_app_12.0.py
 ```
@@ -68,7 +70,7 @@ streamlit run entropy_suite_app_12.0.py
 /Entropy-Suite-App
   - entropy_suite_app_12.0.py            # Main Python script for running the Streamlit app
   - requirements.txt                     # List of required Python packages
-  - README_Entropy_Suite.md                            # Documentation for the project
+  - README_Entropy_Suite.md              # Documentation for the project
   /data
     - Rest_EC_00831_01_FilteredData.csv  # Example EEG data for testing
     - Rest_EC_860_01_FilteredData.csv    # Example EEG data for testing
@@ -79,6 +81,21 @@ streamlit run entropy_suite_app_12.0.py
 ## Sample Data
 
 The `data` directory contains sample EEG files you can use to test the application. These files are in CSV format and represent preprocessed EEG data.
+
+
+## Updating the Repository
+
+To update your local copy of the repository after changes are made in the GitHub repository, use the following commands:
+
+1. Navigate to the folder containing your local repository:
+```bash
+cd /path/to/your/folder
+```
+
+2. Pull the latest changes from the remote repository:
+```bash
+git pull origin main
+```
 
 ## License
 
