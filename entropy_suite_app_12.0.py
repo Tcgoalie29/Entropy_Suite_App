@@ -114,24 +114,24 @@ with tab1:
 
     st.markdown("""
     ## Introduction
-    Welcome to the **Entropy Suite**, a comprehensive tool designed for analyzing the complexity of time-series data using various entropy measures. This application is particularly suited for EEG data but can be applied to other types of time-series data as well.
-                
+    Welcome to the **Entropy Suite**, a comprehensive tool designed for analyzing the complexity of time-series data using various entropy measures. This application is particularly suited for EEG data but can be applied to other types of time-series data, such as ECG or heart rate data.                
+    
     **Features:**
-    - Upload your preprocessed EEG data in CSV format.
+    - Upload your preprocessed EEG, ECG, or heart rate data in CSV format.
     - Choose the type of analysis and entropy measure.
     - Customize parameters such as the number of scales, data trim length, and sampling frequency.
     - Visualize the results with interactive plots.
     - Download the entropy data for further analysis.
 
     **Getting Started:**
-    1. **Upload Data or Select Sample Data:** Use the sidebar to upload your EEG CSV files or select sample datasets. Ensure that your data is preprocessed and formatted correctly.
+    1. **Upload Data or Select Sample Data:** Use the sidebar to upload your EEG, ECG, or heart rate data CSV files or select sample datasets. Ensure that your data is preprocessed and formatted correctly.
     2. **Set Parameters:** Select the analysis type, entropy measure, and adjust the parameters as needed.
     3. **Run Analysis:** Click the 'Run Analysis' button to start processing.
     4. **View Results:** The results will be displayed under the 'Analysis' tab with interactive plots.
     5. **Download Data:** You can download the entropy data as a CSV file for further analysis.
 
     **Data Requirements:**
-    - EEG data should be in CSV format with channels as columns.
+    - EEG, ECG, or heart rate data should be in CSV format with channels or derived metrics as columns.
     - Ensure that the sampling frequency and data trim length are set correctly to match your data.
 
     **Support:**
@@ -149,10 +149,10 @@ with tab2:
 
     # File uploader
     uploaded_files = st.sidebar.file_uploader(
-        "Upload your preprocessed EEG .CSV files",
+        "Upload your preprocessed EEG, ECG, or heart rate .CSV files",
         accept_multiple_files=True,
         type=["csv"],
-        help="Upload one or more preprocessed EEG data files in CSV format. Each file should contain time-series data from EEG channels."
+        help="Upload one or more preprocessed EEG, ECG, or heart rate data files in CSV format. Each file should contain time-series data from the corresponding channels or derived heart rate measurements."
     )
 
     # Preload sample datasets
