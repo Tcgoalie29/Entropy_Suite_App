@@ -252,11 +252,26 @@ with tab2:
             value=True,
             help="Toggle to normalize the spectral entropy value."
         )
+        m = None
+        r = None
     else:
         # Change min_value to 2
         num_scales = st.sidebar.slider(
             "Number of Scales", min_value=2, max_value=50, value=20,
             help="Determine the number of scales for multiscale entropy analysis. Higher scales analyze coarser-grained time-series."
+        )
+        # Customizable inputs for SampEn and FuzzEn
+        m = st.sidebar.number_input(
+            "Embedding Dimension (m)",
+            min_value=1,
+            value=2,
+            help="Length of sequences to be compared."
+        )
+        r = st.sidebar.number_input(
+            "Tolerance (r)",
+            min_value=0.0,
+            value=0.2,
+            help="Tolerance for accepting matches, typically a percentage of the standard deviation."
         )
 
     trim_length = st.sidebar.number_input(
@@ -316,7 +331,7 @@ with tab2:
             # Determine entropy function
             if entropy_type != "SpecEn":
                 scales_list = np.arange(1, num_scales + 1)
-                Mobj = eh.MSobject(entropy_type)
+                Mobj = eh.MSobject(entropy_type, m=int(m), r=r)
             else:
                 scales_list = [1]  # For consistency
 
@@ -506,6 +521,15 @@ with tab2:
                         # Concatenate all channel DataFrames
                         entropy_df = pd.concat(entropy_list, ignore_index=True)
 
+                        # Compute average entropy across channels
+                        if entropy_type != "SpecEn":
+                            # Already handled in plotting
+                            pass
+                        else:
+                            avg_specen = entropy_df[entropy_type].mean()
+                            avg_df = pd.DataFrame({"Channel": ["Average"], entropy_type: [avg_specen]})
+                            entropy_df = pd.concat([entropy_df, avg_df], ignore_index=True)
+
                         # End timing
                         end_time = time.time()
                         total_time = end_time - start_time
@@ -595,15 +619,15 @@ with tab2:
                             fig.update_yaxes(title_text=f"{entropy_type}", row=1, col=1)
                             fig.update_yaxes(title_text="Total Entropy", row=2, col=1)
                         else:
-                            # Bar plot for spectral entropy across channels
-                            fig = go.Figure(
-                                data=[
-                                    go.Bar(
-                                        x=entropy_df["Channel"],
-                                        y=entropy_df[entropy_type],
-                                        marker=dict(color="#4BDCFF"),
-                                    )
-                                ]
+                            # Bar plot for spectral entropy across channels including average
+                            fig = go.Figure()
+
+                            fig.add_trace(
+                                go.Bar(
+                                    x=entropy_df["Channel"],
+                                    y=entropy_df[entropy_type],
+                                    marker=dict(color="#4BDCFF"),
+                                )
                             )
                             fig.update_layout(
                                 template="none",
@@ -703,6 +727,12 @@ with tab2:
                     # Concatenate all entropy data
                     entropy_df = pd.concat(entropy_list, ignore_index=True)
 
+                    # Compute group-level average for SpecEn
+                    if entropy_type == "SpecEn":
+                        group_avg_specen = entropy_df[entropy_df['Channel'] == 'Average'][entropy_type].mean()
+                        group_avg_df = pd.DataFrame({'Subject': ['Group Average'], 'Channel': ['Average'], entropy_type: [group_avg_specen]})
+                        entropy_df = pd.concat([entropy_df, group_avg_df], ignore_index=True)
+
                     # End timing
                     end_time = time.time()
                     total_time = end_time - start_time
@@ -797,15 +827,15 @@ with tab2:
                         fig.update_yaxes(title_text=f"{entropy_type}", row=1, col=1)
                         fig.update_yaxes(title_text="Total Entropy", row=2, col=1)
                     else:
-                        # Bar plot for spectral entropy across subjects
-                        fig = go.Figure(
-                            data=[
-                                go.Bar(
-                                    x=entropy_df["Subject"],
-                                    y=entropy_df[entropy_type],
-                                    marker=dict(color="#4BDCFF"),
-                                )
-                            ]
+                        # Bar plot for spectral entropy across subjects including group average
+                        fig = go.Figure()
+
+                        fig.add_trace(
+                            go.Bar(
+                                x=entropy_df["Subject"],
+                                y=entropy_df[entropy_type],
+                                marker=dict(color="#4BDCFF"),
+                            )
                         )
                         fig.update_layout(
                             template="none",
@@ -891,6 +921,12 @@ with tab2:
                         percent_complete = int(progress * 100)
                         status_text.text(f"Processing subject {subject_name} ({processed_subjects}/{total_subjects}) {percent_complete}%")
                         progress_bar.progress(progress)
+
+                    # Compute group-level average for SpecEn
+                    if entropy_type == "SpecEn":
+                        group_avg_specen = mse_single_channel_df[entropy_type].mean()
+                        group_avg_df = pd.DataFrame({'Subject': ['Group Average'], 'Channel': [target_channel], entropy_type: [group_avg_specen]})
+                        mse_single_channel_df = pd.concat([mse_single_channel_df, group_avg_df], ignore_index=True)
 
                     # End timing
                     end_time = time.time()
@@ -993,15 +1029,15 @@ with tab2:
                         else:
                             st.warning("No data available to plot.")
                     else:
-                        # Bar plot for spectral entropy across subjects
-                        fig = go.Figure(
-                            data=[
-                                go.Bar(
-                                    x=mse_single_channel_df["Subject"],
-                                    y=mse_single_channel_df[entropy_type],
-                                    marker=dict(color="#4BDCFF"),
-                                )
-                            ]
+                        # Bar plot for spectral entropy across subjects including group average
+                        fig = go.Figure()
+
+                        fig.add_trace(
+                            go.Bar(
+                                x=mse_single_channel_df["Subject"],
+                                y=mse_single_channel_df[entropy_type],
+                                marker=dict(color="#4BDCFF"),
+                            )
                         )
                         fig.update_layout(
                             template="none",
@@ -1126,7 +1162,7 @@ with tab3:
                 st.write("""
                 - **FFT Resolution (`N`)**: Default is `2 * len(Sig) + 1`.
                 - **Frequency Band Edges (`Freqs`)**: Default is `(0, 1)` which covers the entire frequency range up to Nyquist frequency.
-                - **Logarithm Base (`Logx`)**: **Default: `exp(1)`**
+                - **Logarithm Base (`Logx`)**: **Default: exp(1)**
                 - **Normalize Entropy (`Norm`)**: **Default: True**
                 """)
 
